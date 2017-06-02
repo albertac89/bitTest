@@ -33,7 +33,7 @@ export class LiveTrades {
   private tradesChannel: any;
   public trades = [];
   public tradeState: string = 'inactive';
-  public lastPrice = '';
+  public lastPrice;
 
   constructor(public navCtrl: NavController) {
     this.pusher = new Pusher(this.APP_KEY);

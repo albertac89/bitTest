@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Live Trades</ion-title>
-    <span class="last-price">{{lastPrice}}$</span>
+    <span class="last-price" *ngIf="lastPrice">{{lastPrice}}$</span>
   </ion-navbar>
 </ion-header>
 
@@ -20,6 +20,7 @@
       </div>
       <div padding-right col-4>
         {{trade.amount.toString()}}
+        <ion-icon name="logo-bitcoin"></ion-icon>
       </div>
     </ion-item>
   </ion-list>
