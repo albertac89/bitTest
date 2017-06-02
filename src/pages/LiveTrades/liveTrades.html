@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Live Trades</ion-title>
+    <span class="last-price">{{lastPrice}}$</span>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="trades.length > 0; else waiting">
+    <ion-item *ngFor="let trade of trades" [@trade]="tradeState">
+      <div padding-right col-4>
+        {{formatTime(trade.timestamp)}}
+      </div>
+      <div padding-right col-4 ngClass="{{trade.type === 1 ? 'price-red' : 'price-green'}}">
+        <ion-icon [name]="trade.type === 1 ? 'arrow-round-down' : 'arrow-round-up'"></ion-icon>
+        {{trade.price}}$
+      </div>
+      <div padding-right col-4>
+        {{trade.amount.toString()}}
+      </div>
+    </ion-item>
+  </ion-list>
+  <ng-template #waiting>
+    <h4 text-center class="waiting">
+      Waiting for trades<span>.</span><span>.</span><span>.</span>
+    </h4>
+  </ng-template>
+</ion-content>

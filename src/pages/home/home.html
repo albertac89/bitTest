@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <ion-icon class="refesh" name="refresh" (tap)="updatePrice()"></ion-icon>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding (tap)="updatePrice()">
+  <h1 text-center>{{exchange}}</h1>
+  <ion-card>
+    <ion-card-content text-center class="last-price">
+      <label>Last price: </label>{{data.last}}$
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content text-center>
+      <label>High: </label>{{data.high}}$
+      <label>Low: </label>{{data.low}}$
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content text-center>
+      <label>24h volume: </label>{{data.volume | number}}$
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content text-center>
+      <label>24h variation: </label>{{data.last - data.open | number}}$
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
