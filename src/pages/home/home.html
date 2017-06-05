@@ -10,29 +10,38 @@
 
 <ion-content padding (tap)="updatePrice()">
   <h1 text-center>{{exchange}}</h1>
-  <ion-card>
-    <ion-card-content text-center class="last-price">
-      <label>Last price: </label>{{data.last}}$
-    </ion-card-content>
-  </ion-card>
 
-  <ion-card>
-    <ion-card-content text-center>
-      <label>High: </label>{{data.high}}$
-      <label>Low: </label>{{data.low}}$
-    </ion-card-content>
-  </ion-card>
+  <div *ngIf="data.last; else waiting">
+    <ion-card>
+      <ion-card-content text-center class="last-price">
+        <label>Last price: </label>{{data.last}}$
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card>
-    <ion-card-content text-center>
-      <label>24h volume: </label>{{data.volume | number}}$
-    </ion-card-content>
-  </ion-card>
+    <ion-card>
+      <ion-card-content text-center>
+        <label>High: </label>{{data.high}}$
+        <label>Low: </label>{{data.low}}$
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card>
-    <ion-card-content text-center>
-      <label>24h variation: </label>{{data.last - data.open | number}}$
-    </ion-card-content>
-  </ion-card>
+    <ion-card>
+      <ion-card-content text-center>
+        <label>24h volume: </label>{{data.volume | number}}$
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content text-center>
+        <label>24h variation: </label>{{data.last - data.open | number}}$
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ng-template #waiting>
+    <h4 text-center class="waiting">
+      Loading<ion-spinner name="dots"></ion-spinner>
+    </h4>
+  </ng-template>
+
 
 </ion-content>

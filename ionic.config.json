@@ -4,12 +4,8 @@
   "type": "ionic-angular",
   "proxies": [
     {
-      "path": "/api/v2/ticker/btcusd/",
-      "proxyUrl": "https://www.bitstamp.net/api/v2/ticker/btcusd/"
-    },
-    {
-      "path": "/api/v2/transactions/btcusd/",
-      "proxyUrl": "https://www.bitstamp.net/api/v2/transactions/btcusd/"
+      "path": "/api",
+      "proxyUrl": "https://www.bitstamp.net/api"
     }
   ]
 }
