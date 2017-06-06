@@ -25,7 +25,6 @@ export class HomePage implements OnInit{
     this.http.get(BaseUrl + '/api/v2/ticker/btcusd/').subscribe(
       (response) => {
         this.data = JSON.parse(response.text());
-        console.log(this.data);
       },
       (err) => {
         let toast = this.toastCtrl.create({

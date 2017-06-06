@@ -13,6 +13,8 @@ import { LiveTrades } from "../pages/LiveTrades/liveTrades";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +27,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     IonicModule.forRoot(MyApp),
     BrowserAnimationsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

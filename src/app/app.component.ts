@@ -26,7 +26,6 @@ export class MyApp {
       { title: 'Chart', component: ChartPage },
       { title: 'Live Trades', component: LiveTrades }
     ];
-
   }
 
   initializeApp() {
