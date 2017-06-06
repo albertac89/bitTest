@@ -1,9 +1,15 @@
+declare var require: any;
 import {Component, ViewChild} from '@angular/core';
 import {NavController, Platform, Nav} from 'ionic-angular';
 import {Http} from "@angular/http";
 import { ToastController } from 'ionic-angular';
-import { BaseUrl } from '../../config/base-url.config';
+import { BaseUrl, BaseUrlChart } from '../../config/base-url.config';
 import {DatePipe} from "@angular/common";
+// import { Chart } from 'angular-highcharts/';
+
+// import * as Highcharts from 'highcharts/highstock';
+
+let Highcharts = require('highcharts/highstock');
 
 @Component({
   selector: 'page-chart',
@@ -33,7 +39,65 @@ export class ChartPage {
   }
 
   ngOnInit() {
-    this.updatePrice();
+    // this.updatePrice();
+    this.setChart();
+  }
+
+  setChart() {
+      this.http.get(BaseUrlChart + '/samples/data/jsonp.php?filename=new-intraday.json&callback=?').subscribe(
+        (response) => {
+          let data: any = response.text();
+
+          data = data.replace('?([','[');
+          data = data.replace(']);',']');
+
+          data = JSON.parse(data);
+          // console.log(data);
+
+
+          Highcharts.stockChart('container', {
+
+            title: {
+              text: 'AAPL stock price by minute'
+            },
+
+            rangeSelector: {
+              buttons: [{
+                type: 'hour',
+                count: 1,
+                text: '1h'
+              }, {
+                type: 'day',
+                count: 1,
+                text: '1D'
+              }, {
+                type: 'all',
+                count: 1,
+                text: 'All'
+              }],
+              selected: 1,
+              inputEnabled: false
+            },
+
+            series: [{
+              turboThreshold: 0,
+              name: 'AAPL',
+              type: 'candlestick',
+              data: data,
+              tooltip: {
+                valueDecimals: 2
+              }
+            }]
+          });
+        },
+        (err) => {
+          let toast = this.toastCtrl.create({
+            message: err,
+            duration: 5000
+          });
+          toast.present();
+        }
+      );
   }
 
   updatePrice() {
