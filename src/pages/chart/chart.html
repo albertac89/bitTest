@@ -8,30 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <!--<div *ngIf="graph" padding>-->
-    <!--<span>{{graph | json}}</span>-->
-  <!--</div>-->
 
-  <!--<div class="row" padding *ngIf="lineChartData.length > 0; else loading">-->
-    <!--<div class="col-md-6">-->
-      <!--<div style="display: block;">-->
-        <!--<canvas id="chart" [ngStyle]="setStyles()" baseChart-->
-                <!--[datasets]="lineChartData"-->
-                <!--[labels]="lineChartLabels"-->
-                <!--[options]="lineChartOptions"-->
-                <!--[colors]="lineChartColors"-->
-                <!--[legend]="lineChartLegend"-->
-                <!--[chartType]="lineChartType"></canvas>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<ng-template #loading>-->
-    <!--<h4 text-center class="waiting">-->
-      <!--Loading<ion-spinner name="dots"></ion-spinner>-->
-    <!--</h4>-->
-  <!--</ng-template>-->
+  <div id="container" style="height: 400px; min-width: 310px" [hidden]="!chartLoaded"></div>
 
-  <!--<div [chart]="chart"></div>-->
-  <div id="container" style="height: 400px; min-width: 310px"></div>
+  <div [hidden]="chartLoaded">
+    <h4 text-center class="waiting">
+      Loading<ion-spinner name="dots"></ion-spinner>
+    </h4>
+  </div>
+
 
 </ion-content>
