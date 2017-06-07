@@ -11,7 +11,7 @@ import { BaseUrl } from '../../config/base-url.config';
 export class HomePage implements OnInit{
 
   public data = {};
-  public exchange: string = 'Bitstamp (USD)';
+  public exchange: string = 'Bitstamp (BTC/USD)';
 
 
   constructor(public navCtrl: NavController, public http: Http, public toastCtrl: ToastController) {

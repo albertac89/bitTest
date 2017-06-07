@@ -10,6 +10,11 @@
 
 <ion-content>
   <ion-list *ngIf="trades.length > 0; else waiting">
+    <ion-list-header>
+      <div col-4><span>Time</span></div>
+      <div col-4><span>Price</span></div>
+      <div col-4><span>Amount</span></div>
+    </ion-list-header>
     <ion-item *ngFor="let trade of trades" [@trade]="tradeState">
       <div padding-right col-4>
         {{formatTime(trade.timestamp)}}
@@ -24,9 +29,19 @@
       </div>
     </ion-item>
   </ion-list>
+
   <ng-template #waiting>
-    <h4 text-center class="waiting">
-      Waiting for trades<ion-spinner name="dots"></ion-spinner>
-    </h4>
+    <ion-list>
+      <ion-list-header>
+        <div col-4><span>Time</span></div>
+        <div col-4><span>Price</span></div>
+        <div col-4><span>Amount</span></div>
+      </ion-list-header>
+      <ion-item>
+        <span text-center class="waiting">
+          Waiting for trades<ion-spinner name="dots"></ion-spinner>
+        </span>
+      </ion-item>
+    </ion-list>
   </ng-template>
 </ion-content>

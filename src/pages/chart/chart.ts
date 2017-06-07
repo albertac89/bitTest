@@ -1,13 +1,10 @@
 declare var require: any;
 import {Component, ViewChild} from '@angular/core';
-import {NavController, Platform, Nav} from 'ionic-angular';
+import {Nav} from 'ionic-angular';
 import {Http} from "@angular/http";
 import {ToastController} from 'ionic-angular';
-import {BaseUrl, BaseUrlChart} from '../../config/base-url.config';
+import {BaseUrl} from '../../config/base-url.config';
 import {DatePipe} from "@angular/common";
-// import { Chart } from 'angular-highcharts/';
-
-// import * as Highcharts from 'highcharts/highstock';
 
 let Highcharts = require('highcharts/highstock');
 
@@ -18,16 +15,10 @@ let Highcharts = require('highcharts/highstock');
 })
 export class ChartPage {
   @ViewChild(Nav) nav: Nav;
-
-  public graph = [];
-  // lineChart
-  public lineChartData: Array<any> = [];
-  public lineChartLabels: Array<string> = [];
-  public lineChartLegend: boolean = false;
-  public lineChartType: string = 'line';
   public chartLoaded = false;
+  private chartRequest;
 
-  constructor(public navCtrl: NavController, public http: Http, public toastCtrl: ToastController, public datePipe: DatePipe, private platform: Platform) {
+  constructor(public http: Http, public toastCtrl: ToastController) {
   }
 
   ngOnInit() {
@@ -35,10 +26,8 @@ export class ChartPage {
     this.setChart();
   }
 
-
-
   setChart() {
-    this.http.get(BaseUrl + '/api/v2/transactions/btcusd/?time=day').subscribe(
+    this.chartRequest = this.http.get(BaseUrl + '/api/v2/transactions/btcusd/?time=day').subscribe(
       (response) => {
         let data = JSON.parse(response.text());
 
@@ -46,11 +35,6 @@ export class ChartPage {
         data = this.parseData(data);
 
         Highcharts.stockChart('container', {
-
-          title: {
-            text: 'AAPL stock price by minute'
-          },
-
           rangeSelector: {
             buttons: [{
               type: 'hour',
@@ -69,9 +53,17 @@ export class ChartPage {
             inputEnabled: false
           },
 
+          navigator: {
+            enabled: false
+          },
+
+          scrollbar: {
+            enabled: false
+          },
+
           series: [{
             turboThreshold: 0,
-            name: 'Bitcoin',
+            name: 'BTC/USD',
             type: 'candlestick',
             data: data,
             tooltip: {
@@ -95,7 +87,6 @@ export class ChartPage {
         toast.present();
       }
     );
-
   }
 
   parseData(data) {
@@ -107,5 +98,9 @@ export class ChartPage {
     });
     let stringData = '['+parsedData.toString()+']';
     return JSON.parse(stringData);
+  }
+
+  ionViewDidLeave() {
+    this.chartRequest.unsubscribe();
   }
 }
