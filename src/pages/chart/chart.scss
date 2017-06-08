@@ -2,5 +2,56 @@ page-list {
   .price-chart {
     display: flex;
   }
+  //Charts
+  .highcharts-candlestick-series .highcharts-point {
+    stroke: $blue-bitstamp;
+  }
 
+  .highcharts-candlestick-series .highcharts-point-up {
+    stroke: $green-bitstamp;
+    fill: rgba(0, 0, 0, 0.0);
+  }
+
+  .highcharts-candlestick-series .highcharts-point-down {
+    stroke: $red-bitstamp;
+    fill: $red-bitstamp;
+  }
+
+  .highcharts-background {
+    fill: $black-bitstamp;
+  }
+
+  .highcharts-range-selector-buttons {
+    .highcharts-button.highcharts-button-normal {
+      .highcharts-button-box {
+        fill: rgba(0, 0, 0, 0.0);
+      }
+      text {
+        color: gray !important;
+        fill: gray !important;
+      }
+    }
+    .highcharts-button .highcharts-button-pressed {
+      text {
+        color: gray !important;
+        fill: gray !important;
+      }
+    }
+  }
+
+  .highcharts-yaxis-grid .highcharts-grid-line {
+    stroke: gray;
+  }
+
+  .highcharts-xaxis .highcharts-tick {
+    stroke: gray;
+  }
+
+  .highcharts-xaxis .highcharts-axis-line {
+    stroke: gray;
+  }
+
+  .highcharts-credits {
+    display: none;
+  }
 }

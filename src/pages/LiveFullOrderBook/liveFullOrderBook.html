@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Live Trades</ion-title>
+    <span class="last-price" *ngIf="lastPrice">{{lastPrice}}$</span>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--BIDS-->
+  <div col-6 class="order-book-bids">
+    <ion-list *ngIf="orderBook.bids.length > 0; else waitingBids">
+      <ion-list-header>
+        <div><span text-center>Bids</span></div>
+      </ion-list-header>
+      <ion-item *ngFor="let bids of orderBook.bids" [@trade]="tradeState">
+          <div class="bids-amount">
+            {{bids[1]}}
+            <ion-icon name="logo-bitcoin"></ion-icon>
+          </div>
+          <div class="bids-price">
+            {{bids[0]}}
+          </div>
+          <div class="amount-bar" [ngStyle]="{'width': getBarWidth(bids[1], maxBid)}"></div>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #waitingBids>
+      <ion-list>
+        <ion-list-header>
+          <div><span>Bids</span></div>
+        </ion-list-header>
+        <ion-item>
+        <span text-center class="waiting">
+          Loading<ion-spinner name="dots"></ion-spinner>
+        </span>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </div>
+
+  <!--ASKS-->
+  <div col-6 class="order-book-asks">
+    <ion-list *ngIf="orderBook.asks.length > 0; else waitingAsks">
+      <ion-list-header>
+        <div><span>Asks</span></div>
+      </ion-list-header>
+      <ion-item *ngFor="let asks of orderBook.asks" [@trade]="tradeState">
+        <div class="asks-price">
+          {{asks[0]}}
+        </div>
+        <div class="asks-amount">
+          {{asks[1]}}
+          <ion-icon name="logo-bitcoin"></ion-icon>
+        </div>
+        <div class="amount-bar" [ngStyle]="{'width': getBarWidth(asks[1], maxAsk)}"></div>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #waitingAsks>
+      <ion-list>
+        <ion-list-header>
+          <div><span>Asks</span></div>
+        </ion-list-header>
+        <ion-item>
+        <span text-center class="waiting">
+          Loading<ion-spinner name="dots"></ion-spinner>
+        </span>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </div>
+</ion-content>

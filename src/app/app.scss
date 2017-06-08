@@ -14,17 +14,14 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+$red-bitstamp: #FF0066;
+$green-bitstamp: #9AC635;
+$blue-bitstamp: #2f7ed8;
+$black-bitstamp: #202226;
+
 .toolbar-content-md {
   display: flex;
 }
-
-//.card-ios {
-//  box-shadow: 0 1px 2px rgba(72, 138, 255, 0.67);
-//}
-//
-//.card-md {
-//  box-shadow: 0 2px 2px 0 rgba(72, 138, 255, 0.14), 0 3px 1px -2px rgba(72, 138, 255, 0.2), 0 1px 5px 0 rgba(72, 138, 255, 0.12);
-//}
 
 .refesh {
   padding-right: 15px;
@@ -35,8 +32,6 @@
 .spinner-dots {
   margin-bottom: -12px;
 }
-
-//background-color: rgba(20,20,20,1);
 
 .content {
   background: #F7F6F2;
@@ -82,58 +77,11 @@
   }
 }
 
-//Charts
-.highcharts-candlestick-series .highcharts-point {
-  stroke: #2f7ed8;
+[col-5] {
+  padding: 0;
 }
 
-.highcharts-candlestick-series .highcharts-point-up {
-  stroke: #9AC635;
-  fill: rgba(0, 0, 0, 0.0);
-}
 
-.highcharts-candlestick-series .highcharts-point-down {
-  stroke: #FF0066;
-  fill: #FF0066;
-}
-
-.highcharts-background {
-  fill: #202226;
-}
-
-.highcharts-range-selector-buttons {
-  .highcharts-button.highcharts-button-normal {
-    .highcharts-button-box {
-      fill: rgba(0, 0, 0, 0.0);
-    }
-    text {
-      color: gray !important;
-      fill: gray !important;
-    }
-  }
-  .highcharts-button .highcharts-button-pressed {
-    text {
-      color: gray !important;
-      fill: gray !important;
-    }
-  }
-}
-
-.highcharts-yaxis-grid .highcharts-grid-line {
-  stroke: gray;
-}
-
-.highcharts-xaxis .highcharts-tick {
-  stroke: gray;
-}
-
-.highcharts-xaxis .highcharts-axis-line {
-  stroke: gray;
-}
-
-.highcharts-credits {
-  display: none;
-}
 
 .list-md {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);

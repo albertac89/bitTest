@@ -1,0 +1,87 @@
+page-liveFullOrderBook {
+  .order-book-bids {
+    float: left;
+    ion-list-header {
+      background: $green-bitstamp;
+      color: white;
+    }
+    .list {
+      margin-left: 5px;
+      margin-right: -5px;
+    }
+    .bids-price {
+      padding: 5px;
+      float: right;
+      color: $green-bitstamp;
+    }
+    .bids-amount {
+      float: left;
+      padding: 5px;
+    }
+    .amount-bar {
+      position: absolute;
+      height: 5px;
+      background: $green-bitstamp;
+      bottom: 0;
+      left: 10px;
+    }
+    .item .item-inner {
+      padding-right: 0;
+      .label {
+        margin-right: 0;
+        display: block;
+      }
+    }
+  }
+
+  .order-book-asks {
+    float: right;
+    ion-list-header {
+      background: $red-bitstamp;
+      color: white;
+    }
+    .list {
+      margin-left: -5px;
+      margin-right: 5px;
+    }
+    .asks-price {
+      padding: 5px;
+      padding-left: 0;
+      float: left;
+      color: $red-bitstamp;
+    }
+    .asks-amount {
+      float: right;
+      padding: 5px;
+    }
+    .amount-bar {
+      position: absolute;
+      height: 5px;
+      background: $red-bitstamp;
+      bottom: 0;
+      left: 10px;
+    }
+    .item .item-inner {
+      padding-right: 0;
+      .label {
+        margin-right: 0;
+        display: block;
+      }
+    }
+  }
+
+  .item-ios, .item-md {
+    font-size: 1.2rem;
+    padding-left: 5px;
+  }
+  .item.item-block .label {
+    display: flex;
+  }
+
+  .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+    border-bottom: 0;
+  }
+  .list-ios .item-block .item-inner {
+    border-bottom: 0;
+  }
+}

@@ -12,6 +12,7 @@ import { LiveTrades } from "../pages/LiveTrades/liveTrades";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, JsonpModule } from '@angular/http';
+import {LiveFullOrderBook} from "../pages/LiveFullOrderBook/liveFullOrderBook";
 
 // import { ChartsModule } from 'ng2-charts';
 // import { ChartModule } from 'angular-highcharts';
@@ -22,7 +23,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     MyApp,
     HomePage,
     ChartPage,
-    LiveTrades
+    LiveTrades,
+    LiveFullOrderBook
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     MyApp,
     HomePage,
     ChartPage,
-    LiveTrades
+    LiveTrades,
+    LiveFullOrderBook
   ],
   providers: [
     StatusBar,
