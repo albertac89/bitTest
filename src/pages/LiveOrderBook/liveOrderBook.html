@@ -3,17 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Live Trades</ion-title>
-    <span class="last-price" *ngIf="lastPrice">{{lastPrice}}$</span>
+    <ion-title>Live Order Book</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <!--BIDS-->
-  <div col-6 class="order-book-bids">
+  <div class="order-book-bids">
     <ion-list *ngIf="orderBook.bids.length > 0; else waitingBids">
       <ion-list-header>
-        <div><span text-center>Bids</span></div>
+        <div><span text-center><b>BIDS</b></span></div>
       </ion-list-header>
       <ion-item *ngFor="let bids of orderBook.bids" [@trade]="tradeState">
           <div class="bids-amount">
@@ -21,7 +20,7 @@
             <ion-icon name="logo-bitcoin"></ion-icon>
           </div>
           <div class="bids-price">
-            {{bids[0]}}
+            {{filterNumber(bids[0])}}
           </div>
           <div class="amount-bar" [ngStyle]="{'width': getBarWidth(bids[1], maxBid)}"></div>
       </ion-item>
@@ -30,7 +29,7 @@
     <ng-template #waitingBids>
       <ion-list>
         <ion-list-header>
-          <div><span>Bids</span></div>
+          <div><span><b>BIDS</b></span></div>
         </ion-list-header>
         <ion-item>
         <span text-center class="waiting">
@@ -42,14 +41,14 @@
   </div>
 
   <!--ASKS-->
-  <div col-6 class="order-book-asks">
+  <div class="order-book-asks">
     <ion-list *ngIf="orderBook.asks.length > 0; else waitingAsks">
       <ion-list-header>
-        <div><span>Asks</span></div>
+        <div><span><b>ASKS</b></span></div>
       </ion-list-header>
       <ion-item *ngFor="let asks of orderBook.asks" [@trade]="tradeState">
         <div class="asks-price">
-          {{asks[0]}}
+          {{filterNumber(asks[0])}}
         </div>
         <div class="asks-amount">
           {{asks[1]}}
@@ -62,7 +61,7 @@
     <ng-template #waitingAsks>
       <ion-list>
         <ion-list-header>
-          <div><span>Asks</span></div>
+          <div><span><b>ASKS</b></span></div>
         </ion-list-header>
         <ion-item>
         <span text-center class="waiting">

@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ChartPage } from '../pages/chart/chart';
 import {LiveTrades} from "../pages/LiveTrades/liveTrades";
-import {LiveFullOrderBook} from "../pages/LiveFullOrderBook/liveFullOrderBook";
+import {LiveOrderBook} from "../pages/LiveOrderBook/liveOrderBook";
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +26,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Chart', component: ChartPage },
       { title: 'Live Trades', component: LiveTrades },
-      { title: 'Live Order Book', component: LiveFullOrderBook }
+      { title: 'Live Order Book', component: LiveOrderBook }
     ];
   }
 

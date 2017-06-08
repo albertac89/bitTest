@@ -16,14 +16,14 @@
       <div col-4><span>Amount</span></div>
     </ion-list-header>
     <ion-item *ngFor="let trade of trades" [@trade]="tradeState">
-      <div padding-right col-4>
+      <div padding-right>
         {{formatTime(trade.timestamp)}}
       </div>
-      <div padding-right col-4 ngClass="{{trade.type === 1 ? 'price-red' : 'price-green'}}">
+      <div padding-right ngClass="{{trade.type === 1 ? 'price-red' : 'price-green'}}">
         <ion-icon [name]="trade.type === 1 ? 'arrow-round-down' : 'arrow-round-up'"></ion-icon>
-        {{trade.price}}$
+        {{trade.price}}
       </div>
-      <div padding-right col-4>
+      <div padding-right>
         {{trade.amount.toString()}}
         <ion-icon name="logo-bitcoin"></ion-icon>
       </div>
@@ -33,9 +33,9 @@
   <ng-template #waiting>
     <ion-list>
       <ion-list-header>
-        <div col-4><span>Time</span></div>
-        <div col-4><span>Price</span></div>
-        <div col-4><span>Amount</span></div>
+        <div><span>Time</span></div>
+        <div><span>Price</span></div>
+        <div><span>Amount</span></div>
       </ion-list-header>
       <ion-item>
         <span text-center class="waiting">

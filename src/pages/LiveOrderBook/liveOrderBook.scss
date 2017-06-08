@@ -1,6 +1,7 @@
-page-liveFullOrderBook {
+page-liveOrderBook {
   .order-book-bids {
     float: left;
+    width: 49%;
     ion-list-header {
       background: $green-bitstamp;
       color: white;
@@ -36,6 +37,7 @@ page-liveFullOrderBook {
 
   .order-book-asks {
     float: right;
+    width: 49%;
     ion-list-header {
       background: $red-bitstamp;
       color: white;
