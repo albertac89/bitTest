@@ -8,7 +8,7 @@ page-liveOrderBook {
     }
     .list {
       margin-left: 5px;
-      margin-right: -5px;
+      margin-right: -7px;
     }
     .bids-price {
       padding: 5px;
@@ -43,7 +43,7 @@ page-liveOrderBook {
       color: white;
     }
     .list {
-      margin-left: -5px;
+      margin-left: -7px;
       margin-right: 5px;
     }
     .asks-price {
@@ -62,6 +62,8 @@ page-liveOrderBook {
       background: $red-bitstamp;
       bottom: 0;
       right: 10px;
+      border-left: 15px solid white;
+      border-right: 1px solid $red-bitstamp;
     }
     .item .item-inner {
       padding-right: 0;

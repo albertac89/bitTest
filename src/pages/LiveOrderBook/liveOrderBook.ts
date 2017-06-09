@@ -77,7 +77,7 @@ export class LiveOrderBook implements OnInit{
   }
 
   getBarWidth(amount, max) {
-    let minBar = 1;
+    let minBar = 1.5;
     let variation = ((amount / max)*100);
     return variation < minBar ? minBar+'px' : variation+'%';
   }
