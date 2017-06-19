@@ -3,39 +3,55 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>{{exchange}}</ion-title>
     <ion-icon class="refesh" name="refresh" (tap)="updatePrice()"></ion-icon>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding (tap)="updatePrice()">
-  <h1 text-center>{{exchange}}</h1>
 
   <div *ngIf="data.last; else waiting">
     <ion-card>
       <ion-card-content text-center class="last-price">
-        <label>Last price: </label>{{data.last}}$
+        <div class="last-price">
+          <label>Last price: </label>{{data.last}}$
+        </div>
+        <div class="low-high">
+          <label>High: </label><span class="green-color">{{data.high}}$</span>
+          <label>Low: </label><span class="red-color">{{data.low}}$</span>
+        </div>
+        <div class="volume">
+          <label>24h volume: </label><span>{{data.volume | number}}$</span>
+        </div>
+        <div class="variation">
+          <label>24h variation: </label><span [ngClass]="data.last - data.open > 0 ? 'green-color' : 'red-color'">{{data.last - data.open | number}}$</span>
+        </div>
       </ion-card-content>
     </ion-card>
+    <!--<ion-card>-->
+      <!--<ion-card-content text-center class="last-price">-->
+        <!--<label>Last price: </label>{{data.last}}$-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
 
-    <ion-card>
-      <ion-card-content text-center>
-        <label>High: </label>{{data.high}}$
-        <label>Low: </label>{{data.low}}$
-      </ion-card-content>
-    </ion-card>
+    <!--<ion-card>-->
+      <!--<ion-card-content text-center>-->
+        <!--<label>High: </label>{{data.high}}$-->
+        <!--<label>Low: </label>{{data.low}}$-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
 
-    <ion-card>
-      <ion-card-content text-center>
-        <label>24h volume: </label>{{data.volume | number}}$
-      </ion-card-content>
-    </ion-card>
+    <!--<ion-card>-->
+      <!--<ion-card-content text-center>-->
+        <!--<label>24h volume: </label>{{data.volume | number}}$-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
 
-    <ion-card>
-      <ion-card-content text-center>
-        <label>24h variation: </label>{{data.last - data.open | number}}$
-      </ion-card-content>
-    </ion-card>
+    <!--<ion-card>-->
+      <!--<ion-card-content text-center>-->
+        <!--<label>24h variation: </label>{{data.last - data.open | number}}$-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
   </div>
   <ng-template #waiting>
     <h4 text-center class="waiting">
