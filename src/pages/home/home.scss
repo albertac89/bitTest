@@ -2,4 +2,12 @@ page-home {
   .last-price {
     font-size: 1.5em;
   }
+  ion-card-content {
+    div {
+      padding-bottom: 20px;
+    }
+    div:last-child {
+      padding-bottom: 0px;
+    }
+  }
 }
